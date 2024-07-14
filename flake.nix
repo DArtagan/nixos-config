@@ -22,10 +22,12 @@
         }
         jovian-nixos.nixosModules.default {
           jovian = {
-            steam.enable = true;
             devices.steamdeck = {
               enable = true;
+              autoUpdate = true;
             };
+            steam.enable = true;
+            steamos.useSteamOSConfig = true;
           };
         }
       ];
