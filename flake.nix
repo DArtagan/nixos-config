@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, jovian-nixos, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, jovian-nixos, ... }: {
     nixosConfigurations.nix-steam-deck = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
