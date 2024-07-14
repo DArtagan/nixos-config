@@ -26,6 +26,7 @@
               enable = true;
               autoUpdate = true;
             };
+            hardware.has.amd.gpu = true;
             steam.enable = true;
             steamos.useSteamOSConfig = true;
           };
