@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720734513,
+        "narHash": "sha256-neWQ8eNtLTd+YMesb7WjKl1SVCbDyCm46LUgP/g/hdo=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "90ae324e2c56af10f20549ab72014804a3064c7f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "jovian-nixos": {
       "inputs": {
         "nix-github-actions": "nix-github-actions",
@@ -62,6 +82,7 @@
     },
     "root": {
       "inputs": {
+        "home-manager": "home-manager",
         "jovian-nixos": "jovian-nixos",
         "nixpkgs": "nixpkgs"
       }
