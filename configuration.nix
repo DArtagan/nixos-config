@@ -29,6 +29,7 @@
     networkmanager.enable = true;
 
     wg-quick.interfaces = {
+      # Launch using: `sudo systemctl restart wg-quick-wg0.service`
       wg0 = {
         address = [ "10.0.1.10/32" ];
         autostart = false;
