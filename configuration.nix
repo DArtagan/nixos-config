@@ -14,16 +14,41 @@
   boot.loader.systemd-boot.enable = true; 
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nix-steam-deck"; # Define your hostname.
-  # networking.wireless.enable = true; # Enables wireless support via 
-  # wpa_supplicant.
+  networking = {
+    hostName = "nix-steam-deck"; # Define your hostname.
+    # networking.wireless.enable = true; # Enables wireless support via 
+    # wpa_supplicant.
 
-  # Configure network proxy if necessary networking.proxy.default = 
-  # "http://user:password@proxy:port/"; networking.proxy.noProxy = 
-  # "127.0.0.1,localhost,internal.domain";
+    # Configure network proxy if necessary networking.proxy.default = 
+    # "http://user:password@proxy:port/"; networking.proxy.noProxy = 
+    # "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+    firewall.allowedUDPPorts = [ 51820 ];  # Wireguard
+
+    # Enable networking
+    networkmanager.enable = true;
+
+    wg-quick.interfaces = {
+      wg0 = {
+        address = [ "10.0.1.10/32" ];
+        autostart = false;
+        dns = [ "192.168.0.202" "1.1.1.1" ];
+        #listenPort = 51820;
+        privateKeyFile = "/etc/wireguard/private.key";
+        peers = [
+          {
+            publicKey = "ky2MMTdJmLKAT/QwgUNpRCmXJb1Mn4Qs/51rqFq6/jo=";
+            allowedIPs = [ "0.0.0.0/0" "::/0" ];
+            # Or only particular subnets
+            #allowedIPs = [ "10.0.1.0/24", "10.0.0.0/24", "192.168.0.0/24" ];
+            endpoint = "immortalkeep.com:51820";
+            persistentKeepalive = 25;
+          }
+        ];
+        #postUp = "ping -c1 10.0.1.1";
+      };
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "America/New_York";
