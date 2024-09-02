@@ -72,7 +72,9 @@
     usbutils  # lsusb
 
     # server admin tools
+    k9s
     kubectl
+    magic-wormhole
   ];
 
   # Git
