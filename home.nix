@@ -70,6 +70,9 @@
     ethtool
     pciutils  # lspci
     usbutils  # lsusb
+
+    # server admin tools
+    kubectl
   ];
 
   # Git
