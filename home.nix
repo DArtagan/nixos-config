@@ -25,6 +25,11 @@
   #  "Xft.dpi" = 172;
   #};
 
+  # Services
+  #services = {
+  #  synching.enable = true;
+  #};
+
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     # archives
