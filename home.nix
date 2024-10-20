@@ -40,7 +40,7 @@
     zstd
 
     # programming
-    uv
+    devenv
 
     # utils
     ripgrep  # recursively searches directories for a regex pattern
@@ -85,13 +85,6 @@
     magic-wormhole
   ];
 
-  # Git
-  programs.git = {
-    enable = true;
-    userName = "William Weiskopf";
-    userEmail = "william@weiskopf.me";
-  };
-
   # alacritty - a cross-platform, GPU-accelerated terminal emulator
   programs.alacritty = {
     enable = true;
@@ -110,8 +103,19 @@
     };
   };
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   programs.fish = {
     enable = true;
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "William Weiskopf";
+    userEmail = "william@weiskopf.me";
   };
 
   programs.tmux = {
