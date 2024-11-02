@@ -2,11 +2,16 @@
 # https://raw.githubusercontent.com/heywoodlh/nixos-configs/ebe30a392abee0426a80158af2f97ad56975d946/workstation/steam-deck.nix
 # https://github.com/heywoodlh/nixos-configs/blob/master/nixos/roles/steam-deck.nix
 
+# This config isn't used anymore, all the settings are in flake.nix
+
 let
   jovian-nixos = builtins.fetchGit {
-    url = "https://github.com/dartagan/Jovian-NixOS";
-    ref = "DArtagan-mesa-extraPackages-patch";
-    rev = "47519f0beb63a80dccc26093eb647f64db8d1696";
+    #url = "https://github.com/dartagan/Jovian-NixOS";
+    #ref = "DArtagan-mesa-extraPackages-patch";
+    #rev = "47519f0beb63a80dccc26093eb647f64db8d1696";
+    url = "https://github.com/Jovian-Experiments/Jovian-NixOS";
+    ref = "development";
+    rev = "899f84dd062dffc5dd912ba235e86be4855e5ffb";
   };
 
 in {
