@@ -81,7 +81,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false; security.rtkit.enable = true; 
+  services.pulseaudio.enable = false; security.rtkit.enable = true;
   services.pipewire = {
     enable = true; alsa.enable = true; alsa.support32Bit = true; 
     pulse.enable = true;
@@ -123,6 +123,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Clean up nix store storage
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 90d";
+  };
 
   # List packages installed in system profile. To search, run: $ nix 
   # search wget
