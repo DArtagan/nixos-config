@@ -4,6 +4,8 @@
   home.username = "willy";
   home.homeDirectory = "/home/willy";
 
+  # Idea: put all the personal files and sensitive values in a mountable volume.  So the computer can be used casually be dewfault, and if keyboard, unlocked for work.
+
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
 
@@ -26,9 +28,10 @@
   #};
 
   # Services
-  #services = {
-  #  synching.enable = true;
-  #};
+  services = {
+    syncthing.enable = true;
+    syncthing.tray.enable = true;
+  };
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -77,6 +80,7 @@
     lm_sensors  # for `sensors` command
     ethtool
     pciutils  # lspci
+    pstree
     usbutils  # lsusb
 
     # server admin tools
@@ -96,7 +100,7 @@
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
-      shell = {
+      terminal.shell = {
         args = ["-l" "-c" "${pkgs.tmux}/bin/tmux"];
         program = "${pkgs.fish}/bin/fish";
       };
@@ -127,6 +131,9 @@
     extraConfig = ''
       # Bind "prefix" for summoning tmux to Ctrl-a
       set-option -g prefix C-a
+
+      # Default shell
+      set-option -g default-shell ${pkgs.fish}/bin/fish
       
       # We're 256 color ready
       set -g default-terminal "screen-256color"
@@ -146,7 +153,6 @@
       
       # reload config file
       bind r source-file ~/.tmux.conf
-      
       
       # Pane navigation
       ### Consider: tmux-pain-control plugin instead

@@ -131,7 +131,16 @@
     tmux
     vim
     wget
+
+    # Gnome debug
+    #gdb
+    #glib
+    #gnome.gnome-session
+    #gnome.mutter
+    #gnome.gnome-shell
   ];
+  #environment.enableDebugInfo = true;
+
   environment.variables.EDITOR = "vim";
 
   # This value determines the NixOS release from which the default 
