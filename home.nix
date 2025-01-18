@@ -27,6 +27,13 @@
   #  "Xft.dpi" = 172;
   #};
 
+  systemd.user.targets.tray = {
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = [ "graphical-session-pre.target" ];
+    };
+  };
+
   # Services
   services = {
     syncthing.enable = true;
@@ -35,58 +42,39 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    # archives
+    bottom  # resource monitor
+    btop  # replacement of htop/nmon
+    devenv
+    dnsutils  # `dig` + `nslookup`
+    ethtool
+    fzf  # A command-line fuzzy finder
     gnutar
+    iftop  # network monitoring
+    iotop  # io monitoring
+    iperf3  # Speed test tool
+    jq  # A lightweight and flexible command-line JSON processor
+    k9s
+    kubectl
+    ldns  # replacement of `dig`, it provide the command `drill`
+    lm_sensors  # for `sensors` command
+    lsof  # list open files
+    ltrace  # library call monitoring
+    gnomeExtensions.appindicator  # app icon system tray
+    magic-wormhole
+    mtr  # A network diagnostic tool
+    nix-output-monitor
+    nmap  # A utility for network discovery and security auditing
+    pciutils  # lspci
+    pstree
+    ripgrep  # recursively searches directories for a regex pattern
+    strace  # system call monitoring
+    sysstat
+    tree
     unzip
+    usbutils  # lsusb
     xz
     zip
     zstd
-
-    # programming
-    devenv
-
-    # utils
-    ripgrep  # recursively searches directories for a regex pattern
-    jq  # A lightweight and flexible command-line JSON processor
-    fzf  # A command-line fuzzy finder
-
-    # networking tools
-    mtr  # A network diagnostic tool
-    iperf3  # Speed test tool
-    dnsutils  # `dig` + `nslookup`
-    ldns  # replacement of `dig`, it provide the command `drill`
-    nmap  # A utility for network discovery and security auditing
-
-    # misc
-    tree
-
-    # nix related
-    # it provides the command `nom` works just like `nix`
-    # with more details log output
-    nix-output-monitor
-
-    bottom  # resource monitor
-    btop  # replacement of htop/nmon
-    iotop  # io monitoring
-    iftop  # network monitoring
-
-    # system call monitoring
-    strace  # system call monitoring
-    ltrace  # library call monitoring
-    lsof  # list open files
-
-    # system tools
-    sysstat
-    lm_sensors  # for `sensors` command
-    ethtool
-    pciutils  # lspci
-    pstree
-    usbutils  # lsusb
-
-    # server admin tools
-    k9s
-    kubectl
-    magic-wormhole
   ];
 
   # alacritty - a cross-platform, GPU-accelerated terminal emulator
