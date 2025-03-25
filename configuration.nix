@@ -120,6 +120,12 @@
   # Enable flakes support
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Enable users to be trusted users of the Nix store (useful for devenv)
+  nix.extraOptions = ''
+    trusted-users = root willy
+  '';
+
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
