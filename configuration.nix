@@ -120,9 +120,29 @@
   # Enable flakes support
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Remote nix build machines
+  nix.distributedBuilds = true;
+  nix.buildMachines = [
+    {
+      hostName = "192.168.1.10";
+      # copied from `/home/will/.ssh/id_ed25519`, should create a new one.
+      sshKey = "/root/.ssh/id_ed25519";
+      system = "x86_64-linux";
+            protocol = "ssh-ng";
+      # if the builder supports building for multiple architectures,
+      # replace the previous line by, e.g.
+      # systems = ["x86_64-linux" "aarch64-linux"];
+      maxJobs = 8;
+      speedFactor = 2;
+      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      mandatoryFeatures = [ ];
+    }
+  ];
+
   # Enable users to be trusted users of the Nix store (useful for devenv)
   nix.extraOptions = ''
     trusted-users = root willy
+    builders-use-substitutes = true
   '';
 
 
