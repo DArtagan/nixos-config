@@ -127,11 +127,8 @@
       hostName = "192.168.1.10";
       # copied from `/home/will/.ssh/id_ed25519`, should create a new one.
       sshKey = "/root/.ssh/id_ed25519";
-      system = "x86_64-linux";
-            protocol = "ssh-ng";
-      # if the builder supports building for multiple architectures,
-      # replace the previous line by, e.g.
-      # systems = ["x86_64-linux" "aarch64-linux"];
+      systems = ["x86_64-linux" "i686-linux"];
+      protocol = "ssh-ng";
       maxJobs = 8;
       speedFactor = 2;
       supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
