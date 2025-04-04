@@ -69,6 +69,7 @@
     ripgrep  # recursively searches directories for a regex pattern
     strace  # system call monitoring
     sysstat
+    texlive.combined.scheme-medium
     tree
     unzip
     usbutils  # lsusb
