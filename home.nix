@@ -64,6 +64,7 @@
     mtr  # A network diagnostic tool
     nix-output-monitor
     nmap  # A utility for network discovery and security auditing
+    opentofu
     pciutils  # lspci
     pstree
     ripgrep  # recursively searches directories for a regex pattern
